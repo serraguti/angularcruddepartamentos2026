@@ -20,7 +20,8 @@ export class InsertDepartamentoComponent {
   
   createDepartamento(): void {
     //RECUPERAMOS LOS DATOS DE LAS CAJAS
-    let id = this.cajaId.nativeElement.value;
+    //SIEMPRE DEBEMOS CONVERTIR LOS DATOS DE JSON A NUMEROS
+    let id = parseInt(this.cajaId.nativeElement.value);
     let nombre = this.cajaNombre.nativeElement.value;
     let localidad = this.cajaLocalidad.nativeElement.value;
     //INSTANCIAMOS UN NUEVO DEPARTAMENTO CON LOS VALORES
