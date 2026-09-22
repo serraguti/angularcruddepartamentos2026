@@ -14,7 +14,18 @@ export class DepartamentosComponent implements OnInit {
     private _cdr: ChangeDetectorRef,
     private _service: ServiceDepartamentos){}
   async ngOnInit(): Promise<void> {
+    this.loadDepartamentosAsync();
+  }
+
+  //CREAMOS UN METODO DE RECARGA DE LOS DATOS
+  async loadDepartamentosAsync(): Promise<void>{
     this.departamentos = await this._service.getDepartamentosAsync();
-    this._cdr.detectChanges();
+    this._cdr.detectChanges();  
+  }
+  deleteDepartamento(id: number): void{
+    this._service.deleteDepartamento(id).subscribe(response => {
+      console.log("Deleted: " + id);
+      this.loadDepartamentosAsync();
+    })
   }
 }

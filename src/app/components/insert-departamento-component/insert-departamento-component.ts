@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
 import { ServiceDepartamentos } from '../../../environments/services/service.departamentos';
 import { Departamento } from '../../models/departamento';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-insert-departamento-component',
@@ -16,6 +17,7 @@ export class InsertDepartamentoComponent {
 
   constructor(private _cdr: ChangeDetectorRef
     , private _service: ServiceDepartamentos
+    , private _router: Router
   ){}
   
   createDepartamento(): void {
@@ -29,8 +31,10 @@ export class InsertDepartamentoComponent {
     //REALIZAMOS LA PETICION POST
     this._service.createDepartamento(dept).subscribe(response => {
       console.log("Insertado");
-      this.mensaje = "Departamento insertado";
-      this._cdr.detectChanges();
+      //UNA VEZ INSERTADO, LLEVAMOS EL COMPONENT A HOME
+      this._router.navigate(["/"]);
+      //this.mensaje = "Departamento insertado";
+      //this._cdr.detectChanges();
     });
   }
 }
