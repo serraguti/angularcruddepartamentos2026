@@ -1,0 +1,21 @@
+<div>
+    <h1 style="color:blue">
+        Crud Api Departamentos
+    </h1>
+    <table class="table table-warning">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Localidad</th>
+            </tr>
+        </thead>
+        @for (dept of departamentos; track dept){
+            <tr>
+                <td>{{dept.numero}}</td>
+                <td>{{dept.nombre}}</td>
+                <td>{{dept.localidad}}</td>
+            </tr>
+        }
+    </table>
+</div>
